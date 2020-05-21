@@ -10,7 +10,7 @@ module.exports = {
 //If the item enhancement level is 20, the enhancement level is not changed.
 //The durability of the item is not changed.
 function succeed(item) {
-   if(item.enhancemnet >=0 && item.enhancement < 20){
+   if(item.enhancement >=0 && item.enhancement < 20){
      return item.enhancement + 1;
    } else {
      return item.enhancement;
@@ -34,7 +34,16 @@ function fail(item) {
 function repair(item) {
   return item.durability = 100;
 }
+
+
 //stretch
+//if the enhancement level is 0, the the name is not modified.
+//if the enhancement level is greater than 0, change the name to include the enhancement level, preceded by a plus sign ( + ), between square brackets before the item's name. Example: the name of a "Iron Sword" enhanced to 7 would be "[+7] Iron Sword".
 function get(item) {
-  return { ...item };
+  console.log(item.name)
+  if(item.enhancement > 0){
+    return `[+${item.enhancement}] ${item.name}`;
+  } else if (item.enhancement ==0){
+    return item.name;
+  }
 }
